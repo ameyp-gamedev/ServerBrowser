@@ -1,0 +1,10 @@
+So, I've made the backend code for a server browser that runs in-game. The server-side code is hosted on Google App Engine. I suck at designing UIs, so at the moment all that I have implemented is a set of functions that add the current server to the list of servers and fetch the list of servers, filtering the list based on various user-supplied parameters.
+
+In order to use this for yourself, you will have to:
+1. Create an App Engine account (it's free) and register an app-name
+2. Edit gae\app.yaml, and replace "myapp" with your app-name
+3. Edit unrealscript\MyOnlineServerBrowser.uc, and on line 9, replace "myapp" with your app-name (leave the ".appspot.com" unchanged")
+
+That's about it. The current game server is automatically added to the serverlist on the App Engine server as soon as the game server is hosted. If an entry already exists in the list for that server's IP, then UpdateTime and Status are updated accordingly.
+
+The data is passed to and from the main server using TCPLink. I'm using a POST request for adding a server to the list, and a GET request for fetching the list of servers.

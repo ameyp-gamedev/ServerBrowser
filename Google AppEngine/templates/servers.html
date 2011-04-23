@@ -1,0 +1,42 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Has password</td>
+            <td>GameType</td>
+            <td>Maplist</td>
+            <td>IP Address</td>
+            <td>Port</td>
+            <td>Current Players</td>
+            <td>Max Players</td>
+            <td>Ranked</td>
+            <td>Status</td>
+        </tr>
+        {% for server in servers %}
+        <tr>
+            <td><span>{{ server.Name }}</span></td>
+            <td><span>{{ server.bProtected }}</span></td>
+            <td><span>{{ server.GameType }}</span></td>
+            <td><span>
+                      {% for map in server.Maplist %}
+                          {{ map }},
+                      {% endfor %}
+            </span></td>
+            <td><span>{{ server.IPAddr }}</span></td>
+            <td><span>{{ server.Port }}</span></td>
+            <td><span>{{ server.CurrentPlayers }}</span></td>
+            <td><span>{{ server.MaxPlayers }}</span></td>
+            <td><span>{{ server.bRanked }}</span></td>
+            <td><span>{{ server.Status }}</span></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
